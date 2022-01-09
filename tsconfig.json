@@ -18,9 +18,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "sourceMap": true, /* generates corrresponding .map file */
+    "declaration": true, /* generate corresponding .d.ts file */
+    // "noUnusedLocals": true, /* reports errors on unused locals (suggested for clean code writing) */
+    "noUnusedParameters": true, /* report errors on unused parameters (again, suggested for clean code writing) */
   },
   "include": [
-    "src"
-  ]
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "build"] // *** The files to not type check ***
 }
