@@ -1,0 +1,31 @@
+.drawer {
+  width: 20%;
+  border: 1px solid var(--background);
+  background-color: var(--secondary);
+  box-shadow: -9px 7px 8px -2px rgba(0,0,0,0.1) , 0px 2px 4px -1px rgba(0,0,0,0.06);
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0.25rem;
+}
+
+.lh-right {
+  position: absolute; 
+  animation: animateright 0.4s;
+}
+
+.lh-left {
+  position: absolute;
+  animation: animateright 0.4s;
+}
+
+@keyframes animateright {
+  from{ right: -50%; opacity: 0 }
+  to{ right: 0; opacity: 1 }
+}
+
+@keyframes animateleft {
+  from{ right: 0; opacity: 1 }
+  to{ right: -50%; opacity: 0 }
+}

@@ -1,0 +1,14 @@
+.text-button {
+  color: var(--text-on-background);
+  background-color: var(--background);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: inline-block;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+}
+
+.text-button:hover {
+  color: var(--background);
+  background-color: var(--text-on-background);
+}

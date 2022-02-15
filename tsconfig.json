@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@icons/*": ["assets/icons/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -28,9 +32,6 @@
   "include": [
     "src/**/*"
   ],
-  "paths": {
-    "components/*": ["components/*"],
-    "icons/*": ["assets/icons/*"]
-  },
+  
   "exclude": ["node_modules", "build"] // *** The files to not type check ***
 }

@@ -1,0 +1,15 @@
+input {
+  border-bottom: 2px solid white; 
+  -webkit-box-shadow: 
+    inset 0 0 4px  rgba(0,0,0,0.1),
+          0 0 12px rgba(0,0,0,0.1); 
+  -moz-box-shadow: 
+    inset 0 0 4px  rgba(0,0,0,0.1),
+          0 0 12px rgba(0,0,0,0.1); 
+  box-shadow: 
+    inset 0 0 4px  rgba(0,0,0,0.1),
+          0 0 12px rgba(0,0,0,0.1); 
+  padding: 10px;
+  background: var(--secondary-light);
+  margin: 0 0 10px 1rem;
+}

@@ -1,0 +1,6 @@
+.my-profile-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-on-secondary);
+  margin-bottom: 1rem;
+}

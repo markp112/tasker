@@ -1,26 +1,17 @@
 import React from 'react';
 import logo from '../../assets/icons/calendar.png';
+
 import './navbar.css';
+import { LoginButton } from '../buttons/auth/login-button';
+import { LogoutButton } from '../buttons/auth/logout-button';
+import { NavMenu } from './menu/menu';
 
 type Props = {
   isLoggedIn: boolean;
+  displayDrawer: (drawContent: JSX.Element) => void;
 };
 
 export const Navbar = (props: Props) => {
-  const navItems = [
-    {
-      label: 'Home',
-      icon: 'pi pi-fw pi-home',
-    },
-    {
-      label: 'Login',
-      icon: 'pi pi-fw pi-key',
-    },
-    {
-      label: 'Settings',
-      icon: 'pi pi-fw pi-cog',
-    },
-  ];
 
   function title() {
     return (
@@ -31,18 +22,15 @@ export const Navbar = (props: Props) => {
     );
   }
 
-  const login = (
-    <span className="text-primary-100 text-xl hover:text-background hover:bg-primary-200 hover:cursor-pointer p-2 inline-block mr-4">
-      Login
-    </span>
-  );
-
   return (
     <div>
       <header>
         <nav className="w-100 bg-gray-700 h-24 flex justify-between flex-row items-center">
           {title()}
-          {!props.isLoggedIn && login}
+          <span className="w-auto flex flex-row justify-start items-center">
+            { props.isLoggedIn ? LogoutButton() : LoginButton() }
+            { <NavMenu displayDrawer={(drawContent: JSX.Element) => props.displayDrawer(drawContent)}/> }
+          </span>
         </nav>
       </header>
     </div>
