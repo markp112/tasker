@@ -1,6 +1,20 @@
 .my-profile-title {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--text-on-secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  height: 200px;
+  width: 200px;
+  background-color: var(--secondary-light);
+  border-radius: 50%;
+  border: 2px solid white;
+  display: inline-block;
+  margin-bottom: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }

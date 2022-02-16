@@ -10,7 +10,7 @@ type FieldControl = {
 
 type Props = {
   fieldAttributes: FieldControl;
-}
+};
 
 export function TextInput(props: Props): JSX.Element {
 
