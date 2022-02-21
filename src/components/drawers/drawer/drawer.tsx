@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './drawer.css';
 import closeIcon from '../../../assets/icons/arrow_right-32.png';
 import closeIconHover from '../../../assets/icons/arrow_right-hover-32.png';
+import { MyProfile } from '../my-profile/my-profile';
+import { useEffect } from '@storybook/addons';
 
 type Props = {
   showDrawer: (state: boolean) => void;
-  childContent: JSX.Element;
+  childContent: string;
 };
 
 export const Drawer = (props: Props) => {
   
   const [drawerClose, setDrawCloseIcon] = useState(closeIcon);
-  
+
   const closeDrawer = () => {
     props.showDrawer(false);
   };
+
+
+  
+  function getChildContent(): JSX.Element {
+    switch(props.childContent) {
+      case 'myProfile': 
+        return MyProfile();
+      default:
+          return <></>;
+    }
+  }
 
   return (
     <div className="drawer lh-right">
@@ -26,7 +39,9 @@ export const Drawer = (props: Props) => {
         onMouseOut={() => setDrawCloseIcon(closeIcon)}
         onClick={() => closeDrawer()}
       />
-      { props.childContent }
+      {
+        getChildContent()
+      }
     </div>
   );
 }

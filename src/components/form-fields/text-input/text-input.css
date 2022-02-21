@@ -13,3 +13,11 @@ input {
   background: var(--secondary-light);
   margin: 0 0 10px 1rem;
 }
+
+.control-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}

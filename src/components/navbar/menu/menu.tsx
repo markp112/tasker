@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import menu from '../../../assets/icons/menu.png';
 import menuHover from '../../../assets/icons/menu-hover.png';
 import './menu.css';
-import { MyProfile } from 'components/drawers/my-profile/my-profile';
 
 type menuItems = | 'my_profile';
 
@@ -19,7 +18,7 @@ const menuItems: menuItem[] = [
 ];
 
 type Props = {
-  displayDrawer: (drawContent: JSX.Element) => void;
+  displayDrawer: (drawContent: string) => void;
 };
 
 export const NavMenu = (props: Props) => {
@@ -29,7 +28,7 @@ export const NavMenu = (props: Props) => {
   const menuItemClick = (id: menuItems) => {
     switch(id) {
       case 'my_profile': 
-        props.displayDrawer(MyProfile());
+        props.displayDrawer('myProfile');
     }
   };
 

@@ -8,7 +8,7 @@ import { NavMenu } from './menu/menu';
 
 type Props = {
   isLoggedIn: boolean;
-  displayDrawer: (drawContent: JSX.Element) => void;
+  displayDrawer: (drawContent: string) => void;
 };
 
 export const Navbar = (props: Props) => {
@@ -29,7 +29,7 @@ export const Navbar = (props: Props) => {
           {title()}
           <span className="w-auto flex flex-row justify-start items-center">
             { props.isLoggedIn ? LogoutButton() : LoginButton() }
-            { <NavMenu displayDrawer={(drawContent: JSX.Element) => props.displayDrawer(drawContent)}/> }
+            { <NavMenu displayDrawer={(drawContent: string) => props.displayDrawer(drawContent)}/> }
           </span>
         </nav>
       </header>
