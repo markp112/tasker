@@ -1,5 +1,6 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect } from 'react';
+import { useAuth0, User } from '@auth0/auth0-react';
+import { isUserRegistered } from 'services/user/registration/registration';
 
 export const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
@@ -10,3 +11,6 @@ export const LoginButton = () => {
     </span>
   );
 };
+
+
+

@@ -10,6 +10,21 @@
   padding: 1%;
 }
 
+@media screen and (max-width: 1600px) {
+  .drawer {
+    width: 15%;
+    border: 1px solid var(--background);
+    background-color: var(--secondary);
+    box-shadow: -9px 7px 8px -2px rgba(0,0,0,0.1) , 0px 2px 4px -1px rgba(0,0,0,0.06);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 2%;
+  }
+  
+  
+}
 .lh-right {
   position: absolute; 
   animation: animateright 0.4s;

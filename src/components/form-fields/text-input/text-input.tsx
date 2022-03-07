@@ -1,13 +1,6 @@
 import React, { ChangeEventHandler, useState } from 'react';
+import { FieldControl } from '../types';
 import './text-input.css';
-
-type FieldControl = {
-  id: string;
-  label: string;
-  required?: boolean;
-  maxLength?: number;
-  placeHolder?: string;
-}; 
 
 type Props = {
   fieldAttributes: FieldControl;
@@ -30,5 +23,3 @@ export function TextInput(props: Props): JSX.Element {
     </span>
   );
 }
-
-export type { FieldControl };

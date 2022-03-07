@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import menu from '../../../assets/icons/menu.png';
 import menuHover from '../../../assets/icons/menu-hover.png';
-import './menu.css';
 
-type menuItems = | 'my_profile';
+import './menu.css';
+import { useAuth0 } from '@auth0/auth0-react';
+
+type MenuItems = | 'my_profile';
 
 type menuItem = {
   menuItem: string;
-  id: menuItems;
+  id: MenuItems;
+  requiresAuthentication: boolean;
 };
 
 const menuItems: menuItem[] = [
   {
     menuItem: 'My Profile',
     id: 'my_profile',
+    requiresAuthentication: true,
   },
 ];
 
@@ -24,8 +28,9 @@ type Props = {
 export const NavMenu = (props: Props) => {
   const [isHovering, setIsHovering] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const { isAuthenticated } = useAuth0();
 
-  const menuItemClick = (id: menuItems) => {
+  const menuItemClick = (id: MenuItems) => {
     switch(id) {
       case 'my_profile': 
         props.displayDrawer('myProfile');
@@ -47,10 +52,12 @@ export const NavMenu = (props: Props) => {
         <ul className="nav-menu">
           {
             menuItems.map(item => (
+              item.requiresAuthentication && isAuthenticated ?
               <li 
                 key={item.id} 
                 onClick={() => menuItemClick(item.id)}
               >{item.menuItem}</li>
+            : <></>
             )
               )
           }
