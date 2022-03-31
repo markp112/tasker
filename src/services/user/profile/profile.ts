@@ -1,18 +1,22 @@
-import { FieldControl } from '@components/form-fields/types';
 import { axiosClient } from 'services/axios/client';
 import { UserProfile } from './types';
 import { uploadImage } from './upload-image';
 
-const UserProfilePath = 'user/profile'
+const UserProfilePath = 'user/profile';
 
-function saveUsersProfile(profile: Map<string, FieldControl>, file?: File) {
-  const avatar = profile.get('avatar');
-  if (file) {
-    const serverUrl = uploadImage(file);
-    if (avatar) { avatar.value = 'serverUrl';
-  } 
+
+function saveUsersProfile(profile: UserProfile, file?: File) {
+  const email = profile.email;
+  if (profile._id === '') profile._id = email;
+  if (file && email) {
+    const result = uploadImage(email as string, file);
   }
-  // axiosClient<string, Map<string, FieldControl>>('post', 'user/profile', profile);
+  if (email) {
+    axiosClient().post(UserProfilePath, profile)
+    .then(result => {
+      console.log(result)
+    })
+  }
 }
 
 async function getUserProfile(email: string): Promise<UserProfile> {

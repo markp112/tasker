@@ -19,7 +19,7 @@ async function isUserRegistered(email: string | undefined): Promise<boolean> {
 async function registerUser(user: User): Promise<boolean> {
   const path = `${UserProfilePath}`;
   const result = await axiosClient().post(path, user.email);
-  return result === 'success' ? true : false;
+  return result.data === 'success' ? true : false;
 } 
 
 export { 

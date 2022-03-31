@@ -2,16 +2,30 @@ import { axiosClient } from 'services/axios/client';
 
 const route = 'user/profile/avatar';
 
-function uploadImage(file: File): Promise<string> {
+type avatarResponse = {
+  result: string,
+  filename: string,
+};
+
+
+function uploadImage(email: string, file: File): Promise<string> {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append('avatarImage', file);
+  formData.append('email', email);
+  const config = {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+  };
   return new Promise((resolve, reject) => {
-    axiosClient().post<File>(route, file)
+    axiosClient().post<FormData>(route, formData, config)
     .then(response => {
-      console.log('%c%s', 'color: #997326', response);
+      console.log('%c', 'color: #997326', response, 'response');
       resolve('f');
     })
-
+    .catch((err) => {
+      console.log('%c⧭', 'color: #ffcc00', err);
+    })
   })
 }
 

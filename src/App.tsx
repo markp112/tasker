@@ -21,7 +21,7 @@ function App() {
   };
 
   useEffect(() => {
-    isAuthenticated
+    console.log('%c⧭', 'color: #994d75', 'useEffect', isAuthenticated, user);
     if (isAuthenticated && user) {
       if (!isUserRegistered(user.email)) {
           registerUser(user)
@@ -30,6 +30,8 @@ function App() {
           }) 
         console.log("got here")
       }
+      console.log('user is registered');
+      userContext.email = user.email  as string;
     }
   }, [isAuthenticated])
   // useEffect(() => {
