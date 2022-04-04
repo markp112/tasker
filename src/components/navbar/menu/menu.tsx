@@ -4,8 +4,7 @@ import menuHover from '../../../assets/icons/menu-hover.png';
 
 import './menu.css';
 import { useAuth0 } from '@auth0/auth0-react';
-
-type MenuItems = | 'my_profile';
+import { MenuItems } from './models';
 
 type menuItem = {
   menuItem: string;
@@ -19,10 +18,15 @@ const menuItems: menuItem[] = [
     id: 'my_profile',
     requiresAuthentication: true,
   },
+  {
+    menuItem: 'Create Task',
+    id: 'create_task',
+    requiresAuthentication: true,
+  },
 ];
 
 type Props = {
-  displayDrawer: (drawContent: string) => void;
+  displayDrawer: (drawContent: MenuItems) => void;
 };
 
 export const NavMenu = (props: Props) => {
@@ -31,10 +35,7 @@ export const NavMenu = (props: Props) => {
   const { isAuthenticated } = useAuth0();
 
   const menuItemClick = (id: MenuItems) => {
-    switch(id) {
-      case 'my_profile': 
-        props.displayDrawer('myProfile');
-    }
+    props.displayDrawer(id);
   };
 
   return (

@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './drawer.css';
 import closeIcon from '../../../assets/icons/arrow_right-32.png';
 import closeIconHover from '../../../assets/icons/arrow_right-hover-32.png';
 import { MyProfile } from '../my-profile/my-profile';
-import { useEffect } from '@storybook/addons';
+import { CreateTask } from '../tasks/create-task';
+import { MenuItems } from '@components/navbar/menu/models';
 
 type Props = {
   showDrawer: (state: boolean) => void;
-  childContent: string;
+  childContent: MenuItems;
 };
 
 export const Drawer = (props: Props) => {
@@ -17,13 +18,14 @@ export const Drawer = (props: Props) => {
   const closeDrawer = () => {
     props.showDrawer(false);
   };
-
-
   
   function getChildContent(): JSX.Element {
     switch(props.childContent) {
-      case 'myProfile': 
+      case 'my_profile': 
         return MyProfile();
+      case 'create_task':
+        return CreateTask();
+      
       default:
           return <></>;
     }

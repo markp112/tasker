@@ -8,11 +8,12 @@ import { Drawer } from 'components/drawers/drawer/drawer';
 import { UserContext, userContextProvider, UserContextType } from 'context/user-context';
 import { getUserProfile } from 'services/user/profile/profile';
 import { isUserRegistered, registerUser } from 'services/user/registration/registration';
+import { MenuItems } from '@components/navbar/menu/models';
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [showDrawer, setShowDrawer] = useState(false);
-  const [childContent, setChildContent] = useState('');
+  const [childContent, setChildContent] = useState<MenuItems>('my_profile');
 
   const userContext: UserContextType = {
     isAuthenticated: isAuthenticated,
@@ -21,7 +22,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('%c⧭', 'color: #994d75', 'useEffect', isAuthenticated, user);
     if (isAuthenticated && user) {
       if (!isUserRegistered(user.email)) {
           registerUser(user)
@@ -41,7 +41,7 @@ function App() {
   //   }
   // }, [isAuthenticated])
 
-  const displayDrawer = (drawContent: string) => {
+  const displayDrawer = (drawContent: MenuItems) => {
     setChildContent(drawContent);
     setShowDrawer(true);
   };
@@ -49,7 +49,7 @@ function App() {
   return (
       <UserContext.Provider value={userContext}>
         <div className="App">
-          <Navbar isLoggedIn={isAuthenticated} displayDrawer={(drawContent: string) => displayDrawer(drawContent)} />
+          <Navbar isLoggedIn={isAuthenticated} displayDrawer={(drawContent: MenuItems) => displayDrawer(drawContent)} />
           {
             showDrawer &&
             <Drawer 

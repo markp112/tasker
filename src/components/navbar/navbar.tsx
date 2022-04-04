@@ -5,10 +5,11 @@ import './navbar.css';
 import { LoginButton } from '../buttons/auth/login-button';
 import { LogoutButton } from '../buttons/auth/logout-button';
 import { NavMenu } from './menu/menu';
+import { MenuItems } from './menu/models';
 
 type Props = {
   isLoggedIn: boolean;
-  displayDrawer: (drawContent: string) => void;
+  displayDrawer: (drawContent: MenuItems) => void;
 };
 
 export const Navbar = (props: Props) => {
@@ -29,7 +30,7 @@ export const Navbar = (props: Props) => {
           {title()}
           <span className="w-auto flex flex-row justify-start items-center">
             { props.isLoggedIn ? LogoutButton() : LoginButton() }
-            { <NavMenu displayDrawer={(drawContent: string) => props.displayDrawer(drawContent)}/> }
+            { <NavMenu displayDrawer={(drawContent: MenuItems) => props.displayDrawer(drawContent)}/> }
           </span>
         </nav>
       </header>
