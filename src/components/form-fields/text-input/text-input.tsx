@@ -1,14 +1,7 @@
 import React, { ChangeEventHandler, useState } from 'react';
-import { FieldControl } from '../types';
+import { Props } from '../types';
 import './text-input.css';
-
-type Props = {
-  label: string,
-  value: string,
-  id: string,
-  isRequired?: boolean,
-  onChange: (key: string, value: string) => void;
-};
+import '../css/form-fields.css';
 
 export function TextInput(props: Props): JSX.Element {
 

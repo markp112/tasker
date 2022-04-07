@@ -45,10 +45,10 @@ export function MyProfile() {
         url={usersProfile.avatarUrl} 
         onChange={(file: File) => onImageChange(file)}
       />
-      { getControl('email', usersProfile.email, 'email', onFieldChange) }
+      {/* { getControl('email', usersProfile.email, 'email', onFieldChange) }
       { getControl('firstName', usersProfile.firstName, 'first name', onFieldChange) }
       { getControl('surname', usersProfile.surname,'surname', onFieldChange) }
-      { getControl('nickName', usersProfile.nickName, 'nick name', onFieldChange) }
+      { getControl('nickName', usersProfile.nickName, 'nick name', onFieldChange) } */}
       {
         isDirty &&
         <button className="text-button-skinny" onClick={() => saveProfile()}>Save</button>

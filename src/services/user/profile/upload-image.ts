@@ -1,12 +1,11 @@
 import { axiosClient } from 'services/axios/client';
 
-const route = 'user/profile/avatar';
+const ROUTE = 'user/profile/avatar';
 
 type avatarResponse = {
   result: string,
   filename: string,
 };
-
 
 function uploadImage(email: string, file: File): Promise<string> {
   const formData = new FormData();
@@ -18,7 +17,7 @@ function uploadImage(email: string, file: File): Promise<string> {
     },
   };
   return new Promise((resolve, reject) => {
-    axiosClient().post<FormData>(route, formData, config)
+    axiosClient().post<FormData>(ROUTE, formData, config)
     .then(response => {
       console.log('%c', 'color: #997326', response, 'response');
       resolve('f');

@@ -1,5 +1,13 @@
 type Frequency = | 'daily' | 'weekly' | 'bi-weekly' | 'monthly' | 'adhoc';
 
+const FREQUENCY_OPTION: string[] = [
+  'daily',  
+  'weekly',
+  'bi-weekly',
+  'monthly',
+  'adhoc',
+];
+
 type Task = {
   _id?: string;
   taskName: string;
@@ -21,4 +29,4 @@ export type {
   TaskList,
 };
 
-export { initTask };
+export { initTask, FREQUENCY_OPTION };

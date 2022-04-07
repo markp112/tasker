@@ -62,6 +62,25 @@ async function performPost<T>(path: string, payload: T, config: AxiosRequestConf
   })
 }
 
+async function performPut<T>(path: string, payload: T, config: AxiosRequestConfig = {}): Promise<Record<string, unknown>> {
+  const route = getRoute(path);
+  const response: Response = await backEndClient.put(route, payload, config);
+  console.log('%c⧭', 'color: #33cc99', response);
+  return new Promise((resolve, reject) => {
+    switch(response.status) {
+      case 200:
+        resolve(response.data);
+        break;
+      case 201: 
+        resolve(response.data);
+        break;
+      default: 
+        console.log(response, ' - resolved with')
+        reject('error')
+    }
+  })
+}
+
 function axiosClient() {
 
   async function get<T>(path: string): Promise<T> {
@@ -72,11 +91,15 @@ function axiosClient() {
     return await performPost<T>(path, payload, config);
   }
 
+  async function put<T>(path: string, payload: T, config: AxiosRequestConfig = {}): Promise<Record<string, unknown>> {
+    return await performPut<T>(path, payload, config);
+  }
+
   async function get64(path: string): Promise<string> {
     return await getBase64(path);
   }
 
-  return { get, post, get64 };
+  return { get, post, put, get64 };
 } 
 
 export {

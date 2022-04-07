@@ -1,16 +1,12 @@
-type FieldType = 'text' | 'image';
-
-type FieldControl = {
-  id: string;
-  type: FieldType;
-  label: string;
-  value: string | number | boolean;
-  displayOrder: number;
-  required?: boolean;
-  maxLength?: number;
-  placeHolder?: string;
-}; 
+type Props = {
+  label: string,
+  value: string,
+  id: string,
+  isRequired?: boolean,
+  onChange: (key: string, value: string) => void;
+  optionValues?: string[],
+};
 
 export type {
-  FieldControl,
-};
+  Props,
+}
