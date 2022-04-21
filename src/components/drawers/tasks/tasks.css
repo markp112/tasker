@@ -1,6 +1,59 @@
+.vars {
+  --task-item-width: 85%;
+}
+
 .task-title {
   font-weight: 700;
   font-size: 1.4rem;
   color: var(--text-on-secondary);
   margin-bottom: 2rem;
+}
+
+.task-headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1%;
+  width: var(--task-item-width);
+}
+
+.task-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 5px;
+  width: var(--task-item-width);
+}
+
+.task-list-item span {
+  width: 45%;
+  text-align: left;
+  line-height: 24px;
+  padding-left: 5px;
+}
+
+.task-list-item :last-child {
+  text-align: center;
+  width: 10%;
+}
+
+.task-list-item:hover {
+  background-color: var(--background);
+  color: var(--text-on-background);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icons  {
+  width: 15%;
+  
+}
+.icons img {
+  display: inline-block;
+
 }

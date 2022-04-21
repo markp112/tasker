@@ -24,7 +24,7 @@ export function MyProfile() {
 
   const onFieldChange = (key: string, value: string | number) => {
     const profile: UserProfile = { ...usersProfile };
-    profile[key as keyof UserProfile ] = value.toString();
+    profile[ key as keyof UserProfile ] = value.toString();
     setUsersProfile(profile);
     setIsDirty(true);
   };

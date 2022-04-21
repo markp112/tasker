@@ -1,3 +1,3 @@
-type MenuItems = | 'my_profile' | 'create_task';
+type MenuItems = | 'my_profile' | 'Tasks';
 
 export type { MenuItems };

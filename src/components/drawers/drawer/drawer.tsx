@@ -5,6 +5,7 @@ import closeIconHover from '../../../assets/icons/arrow_right-hover-32.png';
 import { MyProfile } from '../my-profile/my-profile';
 import { CreateTask } from '../tasks/create-task';
 import { MenuItems } from '@components/navbar/menu/models';
+import { TaskList } from '../tasks/task-list';
 
 type Props = {
   showDrawer: (state: boolean) => void;
@@ -23,8 +24,8 @@ export const Drawer = (props: Props) => {
     switch(props.childContent) {
       case 'my_profile': 
         return MyProfile();
-      case 'create_task':
-        return CreateTask();
+      case 'Tasks':
+        return TaskList();
       
       default:
           return <></>;

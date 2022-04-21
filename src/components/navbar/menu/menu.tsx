@@ -19,8 +19,8 @@ const menuItems: menuItem[] = [
     requiresAuthentication: true,
   },
   {
-    menuItem: 'Create Task',
-    id: 'create_task',
+    menuItem: 'Tasks',
+    id: 'Tasks',
     requiresAuthentication: true,
   },
 ];

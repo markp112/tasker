@@ -11,23 +11,22 @@ export function SelectInput(props: Props) {
   }, []);
 
   const getOption = (option: string) => {
-    
-      if (props.value === option) {
-        return (
-          <option
-          key={option}
-          value={option}
-          selected
-          >{option}</option>
-        )
-      } else {
-        return (
+    if (props.value === option) {
+      return (
+        <option
+        key={option}
+        value={option}
+        selected
+        >{option}</option>
+      )
+    } else {
+      return (
 
-          <option
-          key={option}
-          value={option}
-          >{option}</option>
-        )}
+        <option
+        key={option}
+        value={option}
+        >{option}</option>
+      )}
   }
   return (
     <span className="control-group">
