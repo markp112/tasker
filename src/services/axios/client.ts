@@ -65,7 +65,7 @@ async function performPost<T>(path: string, payload: T, config: AxiosRequestConf
 async function performPut<T>(path: string, payload: T, config: AxiosRequestConfig = {}): Promise<Record<string, unknown>> {
   const route = getRoute(path);
   const response: Response = await backEndClient.put(route, payload, config);
-  console.log('%c⧭', 'color: #33cc99', response);
+  console.log('%c⧭', 'color: #33cc99', {response});
   return new Promise((resolve, reject) => {
     switch(response.status) {
       case 200:
@@ -73,6 +73,9 @@ async function performPut<T>(path: string, payload: T, config: AxiosRequestConfi
         break;
       case 201: 
         resolve(response.data);
+        break;
+      case 204: 
+        resolve(response.data)
         break;
       default: 
         console.log(response, ' - resolved with')

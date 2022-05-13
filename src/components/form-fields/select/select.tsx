@@ -30,7 +30,10 @@ export function SelectInput(props: Props) {
   }
   return (
     <span className="control-group">
-      <label htmlFor={props.id}>{props.label}</label>
+      {
+        props.label !== ''  &&
+        <label htmlFor={props.id}>{props.label}</label>
+      }
       <select
         className="arrow"
         name="select-control"

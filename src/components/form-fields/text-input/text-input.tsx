@@ -9,7 +9,10 @@ export function TextInput(props: Props): JSX.Element {
 
   return (
     <span className="control-group">
-      <label htmlFor={props.label}>{props.label}</label>
+      {
+        props.label !== '' &&
+        <label htmlFor={props.label}>{props.label}</label>
+      }
       <input 
         type="text" 
         className='input-field' 

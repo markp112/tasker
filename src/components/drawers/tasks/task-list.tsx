@@ -12,6 +12,7 @@ export function TaskList() {
   const [taskList, setTaskList] = useState<Task[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [id, setId] = useState('');
+  const [showModalPopup, setShowModalPopup] = useState(false);
 
   useEffect(() => {
     const getTaskList = async() =>{
@@ -23,39 +24,52 @@ export function TaskList() {
     getTaskList();
   }, []);
 
-  const editTaskClick = (id: string | undefined) => {
+  const editTaskClick = (id: string) => {
     setIsEditing(true);
     if (id) {
       setId(id);
     }
   }
 
+  const deleteTask = (id: string) => {
+    setShowModalPopup(true);
+  }
+
+  const closeEditWindow = (editedTask: Task) => {
+    setIsEditing(false);
+    const updatedList = taskList.map(task => 
+      task._id === editedTask._id ? editedTask : task
+      );
+    setTaskList(updatedList);
+  }
+
   const getTaskItem = (task: Task) => {
     if (isEditing && id === task._id) {
       return ( isEditing && 
-        <EditTask task={task}/>
+        <EditTask 
+          task={task}
+          closeEdit={(task: Task) => closeEditWindow(task)}
+        />
       )
     } else {
       return (
-        <>
-      <span key={task._id} className="row">
-        <li  className="task-list-item">
-          <span>{task.taskName}</span>
-          <span>{task.frequency}</span>
-          <span>{task.value}</span>
-        </li>
-        <span className="icons">
-          <img 
-            src={pencilIcon} alt="Edit"
-            onClick={() => editTaskClick(task._id)}
+        <span key={task._id} className="row">
+          <li  className="task-list-item">
+            <span>{task.taskName}</span>
+            <span>{task.frequency}</span>
+            <span>{task.value}</span>
+          </li>
+          <span className="icons">
+            <img 
+              src={pencilIcon} alt="Edit"
+              onClick={() => editTaskClick(task._id as string)}
+              />
+            <img
+              src={deleteIcon} alt="delete" 
+              onClick={() => deleteTask(task._id as string)}
             />
-          <img src={deleteIcon} alt="delete" />
+          </span>
         </span>
-      </span>
-      {
-      
-      }
-      </>
       )
     }
   }

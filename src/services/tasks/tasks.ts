@@ -12,10 +12,10 @@ function saveTask(task: Task): Promise<Response> {
         resolve(result as Response);
       })
     } else {
-      axiosClient().put<Task>(`${TASK_ROUTE}/task`, task)
+      axiosClient().put<Task>(`${TASK_ROUTE}/task/${task._id}`, task)
       .then(result => {
-        console.log(result);
-        reject('failed')
+        console.log({result});
+        resolve(result as Response)
       })
     }
   })
@@ -25,8 +25,6 @@ function getTasks(): Promise<Task[]> {
   return new Promise((resolve, reject) => {
     axiosClient().get<Task[]>(TASK_ROUTE)
     .then((result) => {
-      console.log('%c⧭', 'color: #ff6600', result);
-      // const tasks = result.data as any as Task[];
       resolve(result)
     })
   })
